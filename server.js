@@ -12,7 +12,7 @@ mongoose.connection.on('connected', () => {
     console.log(`Connected on MongoDB ${mongoose.connection.name}`) //shows we are connected to MongoDB atlas
 })
 
-
+const Fruit = require('./models/fruit.js')
 
 
 
