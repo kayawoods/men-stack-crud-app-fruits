@@ -65,6 +65,16 @@ app.get("/fruits/:fruitId/edit", async (req, res) => {
     console.log(foundFruit);
     res.render('fruits/edit.ejs', { fruit: foundFruit}) 
   });
+
+  app.put("/fruits/:fruitId", async (req, res) => {
+    if (req.body.isReadyToEat === "on") {
+        req.body.isReadyToEat = true;
+      } else {
+        req.body.isReadyToEat = false;
+      }
+      await Fruit.findByIdAndUpdate(req.params.fruitId, req.body);
+      res.redirect(`/fruits/${req.params.fruitId}`);
+    });
   
 
 app.listen(3000, () => {
